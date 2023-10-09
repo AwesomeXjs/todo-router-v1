@@ -1,15 +1,16 @@
-$accent: #398dc0;
-$accent-light: #59a7d8;
-$accent-dark: #2c719c;
+$accent: #4f4f4f;
+$accent-light: #777676;
+$accent-dark: #3f3f3f;
 $background-opacity: rgba(0, 0, 0, 0.7);
-$text: #000;
+$text: white;
 $special-text: rgb(145, 144, 144);
 $border: #398dc0;
 
-$regular-text: 16px;
+$regular-text: 19px;
 $small-text: 14px;
 $lineheight: 1.75;
-$userfont: 'Roboto', sans-serif;
+$userfont: 'Inter', sans-serif;
+$special-font: 'Racing Sans One', cursive;
 $transition: 0.25s ease-out;
 $index: calc(1vw + 1vh);
 $radius: 20px;
