@@ -2,13 +2,10 @@ import { useState } from 'react'
 import styles from './HomePage.module.scss'
 import { PiNotePencilFill } from 'react-icons/pi'
 
-const HomePage = () => {
+const HomePage = ({ addTaskHandler }) => {
 	const [valueText, setValueText] = useState({ title: '', description: '' })
 	const changerValue = (type, event) => {
 		setValueText({ ...valueText, [type]: event.target.value })
-	}
-	const addTaskHandler = event => {
-		event.preventDefault()
 	}
 
 	return (
@@ -16,7 +13,10 @@ const HomePage = () => {
 			<h1>TO-DO NOW</h1>
 			<PiNotePencilFill />
 
-			<form className={styles.formWrapper} onSubmit={addTaskHandler}>
+			<form
+				className={styles.formWrapper}
+				onSubmit={event => addTaskHandler(event, valueText, setValueText)}
+			>
 				<h2>ADD TASK</h2>
 				<label>
 					Title:

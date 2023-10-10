@@ -1,10 +1,13 @@
+import { NavLink } from 'react-router-dom'
 import styles from './Menu.module.scss'
 
 const Menu = () => {
 	return (
-		<div>
-			<h1>menu</h1>
-		</div>
+		<nav>
+			<NavLink to={'.'}>Home page</NavLink>
+			<NavLink to={'todolist'}>To-Do list</NavLink>
+			<NavLink to={'apilist'}>Api list</NavLink>
+		</nav>
 	)
 }
 
