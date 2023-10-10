@@ -37,7 +37,7 @@ function App() {
 		<BrowserRouter>
 			<div className='App'>
 				<Routes>
-					<Route path='/todo-router-v1/' element={<Layout />}>
+					<Route path='/' element={<Layout />}>
 						<Route
 							index
 							element={
@@ -58,7 +58,7 @@ function App() {
 							path='apilist'
 							element={<ApiList customStyleButtons={customStyleButtons} />}
 						/>
-						<Route path='/*' element={<NotFound />} />
+						<Route path='todo-router-v1/' element={<Navigate to={'/'} />} />
 					</Route>
 				</Routes>
 			</div>
