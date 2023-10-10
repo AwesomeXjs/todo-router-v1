@@ -1,1 +1,19 @@
 @import '../../scss/variables';
+
+.apiListWrapper {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.label,
+.label p {
+	display: inline;
+	font-family: $special-font;
+	margin-right: 40px;
+}
+
+.formWrapper,
+.sortWrapper,
+.actionWrapper {
+	margin-bottom: 20px;
+}

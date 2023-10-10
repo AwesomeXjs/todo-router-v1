@@ -1,5 +1,76 @@
 @import '../../scss/variables';
 
 .textArea {
-	color: black;
+	resize: none;
+	background-color: $accent-dark;
+	font-size: 25px;
+	line-height: 1;
+	font-family: $special-font;
+	border-radius: 20px;
+	padding: 10px;
+	border: 1px solid white;
+	text-align: center;
+}
+.formWrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 20px;
+}
+.label {
+	display: flex;
+	flex-direction: column;
+}
+.homeWrapper h2,
+h3,
+h4 {
+	font-family: $special-font;
+	font-weight: normal;
+}
+.homeWrapper h1 {
+	font-family: $special-font;
+	font-size: 64px;
+}
+
+.addTastTitle {
+	position: relative;
+	border-bottom: 1px solid $text;
+	margin-bottom: 20px;
+}
+
+.toDoTitle {
+	position: relative;
+}
+.toDoTitle::before,
+.toDoTitle::after {
+	content: '';
+	position: absolute;
+	height: 2px;
+	width: 60px;
+	background-color: $text;
+	top: 50%;
+}
+.toDoTitle::after {
+	right: 32%;
+}
+.toDoTitle::before {
+	left: 32%;
+}
+.iconHomePage {
+	position: relative;
+	font-size: 50px;
+}
+.iconHomePage::before,
+.iconHomePage::after {
+	content: '';
+	position: absolute;
+	height: 2px;
+	width: 200px;
+	background-color: $text;
+}
+.iconHomePage::before {
+	left: 30%;
+}
+.iconHomePage::after {
+	right: 30%;
 }

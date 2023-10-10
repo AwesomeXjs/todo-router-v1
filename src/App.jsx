@@ -19,12 +19,18 @@ function App() {
 				{
 					title: data.title,
 					description: data.description,
-					isComplete: false,
+					completed: false,
 					id: uuidv4(),
 				},
 			])
 		}
 		setData({ title: '', description: '' })
+	}
+	const customStyleButtons = {
+		marginRight: '15px',
+		fontSize: '20px',
+		border: '1px solid white',
+		color: 'white',
 	}
 
 	return (
@@ -34,13 +40,24 @@ function App() {
 					<Route path='/' element={<Layout />}>
 						<Route
 							index
-							element={<HomePage addTaskHandler={addTaskHandler} />}
+							element={
+								<HomePage posts={posts} addTaskHandler={addTaskHandler} />
+							}
 						/>
 						<Route
 							path='todolist'
-							element={<ToDoList posts={posts} setPosts={setPosts} />}
+							element={
+								<ToDoList
+									customStyleButtons={customStyleButtons}
+									posts={posts}
+									setPosts={setPosts}
+								/>
+							}
 						/>
-						<Route path='apilist' element={<ApiList />} />
+						<Route
+							path='apilist'
+							element={<ApiList customStyleButtons={customStyleButtons} />}
+						/>
 						<Route path='*' element={<NotFound />} />
 					</Route>
 				</Routes>

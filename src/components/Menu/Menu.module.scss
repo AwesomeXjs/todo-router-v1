@@ -1,1 +1,76 @@
 @import '../../scss/variables';
+
+.navWrapper {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 40px;
+}
+.navWrapper a {
+	margin-right: 50px;
+	font-family: $special-font;
+}
+
+.navWrapper {
+	font-family: 'Titillium Web';
+	text-transform: uppercase;
+	text-align: center;
+	font-weight: 600;
+}
+
+.navWrapper * {
+	box-sizing: border-box;
+	transition: all 0.35s ease;
+}
+
+.navWrapper li {
+	display: inline-block;
+	list-style: outside none none;
+	margin: 0.5em 1em;
+	padding: 0;
+}
+
+.navWrapper a {
+	padding: 0.5em 0.8em;
+	color: rgba(255, 255, 255, 0.5);
+	position: relative;
+	text-decoration: none;
+	font-size: 20px;
+}
+
+.navWrapper a::before,
+.navWrapper a::after {
+	content: '';
+	height: 14px;
+	width: 14px;
+	position: absolute;
+	transition: all 0.35s ease;
+	opacity: 0;
+}
+
+.navWrapper a::before {
+	content: '';
+	right: 0;
+	top: 0;
+	border-top: 3px solid $text;
+	border-right: 3px solid $text;
+	transform: translate(-100%, 50%);
+}
+
+.navWrapper a:after {
+	content: '';
+	left: 0;
+	bottom: 0;
+	border-bottom: 3px solid $text;
+	border-left: 3px solid $text;
+	transform: translate(100%, -50%);
+}
+
+.navWrapper a:hover:before,
+.navWrapper a:hover:after {
+	transform: translate(0, 0);
+	opacity: 1;
+}
+
+.navWrapper a:hover {
+	color: $text;
+}

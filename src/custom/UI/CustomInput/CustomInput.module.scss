@@ -1,0 +1,13 @@
+@import '../../../scss/variables';
+
+.customInput {
+	background-color: $accent-dark;
+	color: $text;
+	border-radius: $radius;
+	padding: 15px;
+	width: 400px;
+	text-align: center;
+	border: 1px solid $text;
+	font-size: 20px;
+	font-family: $special-font;
+}

@@ -1,3 +1,4 @@
+import CustomButton from '../../../custom/UI/CustomButton/CustomButton'
 import { compeleteCheck, deleteSinglePost } from '../../../custom/hooks/Hooks'
 import styles from './ToDo.module.scss'
 
@@ -6,26 +7,37 @@ const ToDo = ({ todo, posts, setPosts }) => {
 		<>
 			<div
 				className={
-					todo.isComplete
+					todo.completed
 						? `${styles.todoWrapper} ${styles.todoComplete}`
 						: styles.todoWrapper
 				}
 			>
-				<h1>Title: {todo.title}</h1>
-				<h2>{todo.description ? `Description:${todo.description}` : null}</h2>
-				<h3>id: {todo.id}</h3>
-				<button
-					style={{ color: 'black' }}
+				<div
+					className={styles.todoContent}
 					onClick={() => compeleteCheck(todo.id, posts, setPosts)}
 				>
-					Завершен
-				</button>
-				<button
-					style={{ color: 'black' }}
+					<div className={styles.titleContent}>
+						<h1>Title</h1>
+						<p>{todo.title}</p>
+					</div>
+					{!!todo.description && (
+						<div className={styles.descriptContent}>
+							<h1>Description:</h1>
+							<p>{todo.description}</p>
+						</div>
+					)}
+				</div>
+				<div className={styles.idContent}>
+					<h3>id: </h3>
+					<p>{todo.id}</p>
+				</div>
+
+				<CustomButton
+					style={{ padding: '5px', border: '1px solid red', color: 'white' }}
 					onClick={() => deleteSinglePost(todo.id, posts, setPosts)}
 				>
-					Удалить
-				</button>
+					Delete
+				</CustomButton>
 			</div>
 		</>
 	)

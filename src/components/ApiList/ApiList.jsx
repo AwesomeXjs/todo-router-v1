@@ -10,97 +10,93 @@ import {
 } from '../../custom/hooks/Hooks'
 import ToDo from '../ToDoList/ToDo/ToDo'
 import styles from './ApiList.module.scss'
+import CustomButton from '../../custom/UI/CustomButton/CustomButton'
+import CustomInput from '../../custom/UI/CustomInput/CustomInput'
 
-const ApiList = () => {
+const ApiList = ({ customStyleButtons }) => {
 	const [apiPosts, setApiPosts] = useState([])
-	const [apiUrl, setApiUrl] = useState('')
+	const [apiQty, setApiQty] = useState(0)
 	const location = useLocation()
 	const navigate = useNavigate()
 	const parsed = queryString.parse(location.search)
 	const [sortKey, setSortKey] = useState(parsed.sort)
 
 	useEffect(() => {
-		const KEYS = ['id', 'title', 'description', 'isComplete']
+		const KEYS = ['id', 'title', 'isComplete']
 		if (!KEYS.includes(parsed.sort)) {
 			navigate('.')
 		}
-		setSortKey(parsed.sort)
 		setApiPosts(sortByKey(apiPosts, sortKey))
+		setSortKey(parsed.sort)
 	}, [parsed.sort])
 
 	const submitHandler = event => {
 		event.preventDefault()
 	}
-	const apiRequest = async api => {
-		try {
-			const res = await fetch(api)
-			const posts = await res.json()
-			setApiPosts(posts)
-		} catch (error) {
-			console.log(error.message)
-		}
+	const numberPosts = api => {
+		fetch(`https://jsonplaceholder.typicode.com/todos`)
+			.then(response => response.json())
+			.then(post => setApiPosts([...post].filter((e, i) => i < api)))
 	}
 
 	return (
 		<div>
-			<div>
-				<Link onClick={() => setSortKey(parsed.sort)} to='?sort=id'>
-					Сорт по айди
+			<div className={styles.sortWrapper}>
+				<Link onClick={() => setSortKey('id')} to='?sort=id'>
+					<CustomButton style={customStyleButtons}>Sort by ID</CustomButton>
 				</Link>
-				<Link onClick={() => setSortKey(parsed.sort)} to='?sort=title'>
-					Сорт по title
-				</Link>
-				<Link onClick={() => setSortKey(parsed.sort)} to='?sort=description'>
-					sort by description
+				<Link onClick={() => setSortKey('title')} to='?sort=title'>
+					<CustomButton style={customStyleButtons}>Sort by title</CustomButton>
 				</Link>
 			</div>
-			<div>
-				<button onClick={() => deleteListHandler(setApiPosts)}>
-					Delete all
-				</button>
-				<hr />
-				<button onClick={() => deleteCompleting(apiPosts, setApiPosts)}>
-					Delete Completing
-				</button>
-				<hr />
-				<button onClick={() => deleteUncompleting(apiPosts, setApiPosts)}>
-					Delete uncompleted tasks
-				</button>
-				<hr />
-				<button onClick={() => completeAll(apiPosts, setApiPosts)}>
-					Complete all tasks
-				</button>
-			</div>
-			<form onSubmit={submitHandler}>
-				<label>
-					Введите url todos:
-					<input
-						type='text'
-						value={apiUrl}
-						onChange={e => setApiUrl(e.target.value)}
+
+			<form className={styles.formWrapper} onSubmit={submitHandler}>
+				<label className={styles.label}>
+					<p>How many tasks:</p>
+					<CustomInput
+						type='number'
+						value={apiQty}
+						onChange={e => setApiQty(e.target.value)}
 					/>
 				</label>
-				<button
-					type='submit'
-					onClick={() => apiRequest(apiUrl)}
-					style={{ color: 'black' }}
-				>
+				<CustomButton type='submit' onClick={() => numberPosts(apiQty)}>
 					Go!
-				</button>
-				<button
-					type='submit'
-					onClick={() =>
-						apiRequest('https://jsonplaceholder.typicode.com/todos')
-					}
-					style={{ color: 'black' }}
-				>
-					Example from placeholder.com
-				</button>
+				</CustomButton>
 			</form>
+			<div className={styles.actionWrapper}>
+				<CustomButton
+					style={customStyleButtons}
+					onClick={() => deleteListHandler(setApiPosts)}
+				>
+					Delete all
+				</CustomButton>
 
-			{apiPosts.map(e => (
-				<ToDo posts={apiPosts} setPosts={setApiPosts} todo={e} key={e.id} />
-			))}
+				<CustomButton
+					style={customStyleButtons}
+					onClick={() => deleteCompleting(apiPosts, setApiPosts)}
+				>
+					Delete Completing
+				</CustomButton>
+
+				<CustomButton
+					style={customStyleButtons}
+					onClick={() => deleteUncompleting(apiPosts, setApiPosts)}
+				>
+					Delete uncompleted tasks
+				</CustomButton>
+
+				<CustomButton
+					style={customStyleButtons}
+					onClick={() => completeAll(apiPosts, setApiPosts)}
+				>
+					Complete all tasks
+				</CustomButton>
+			</div>
+			<div className={styles.apiListWrapper}>
+				{apiPosts.map(e => (
+					<ToDo posts={apiPosts} setPosts={setApiPosts} todo={e} key={e.id} />
+				))}
+			</div>
 		</div>
 	)
 }
