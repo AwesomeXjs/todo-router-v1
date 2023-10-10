@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/todo-router-v1/static/css/main.b0e38aa1.css",
+    "main.js": "/todo-router-v1/static/js/main.d581a22c.js",
+    "index.html": "/todo-router-v1/index.html",
+    "main.b0e38aa1.css.map": "/todo-router-v1/static/css/main.b0e38aa1.css.map",
+    "main.d581a22c.js.map": "/todo-router-v1/static/js/main.d581a22c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b0e38aa1.css",
+    "static/js/main.d581a22c.js"
+  ]
+}
