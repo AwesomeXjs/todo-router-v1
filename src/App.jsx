@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import './scss/_style.scss'
@@ -37,7 +37,7 @@ function App() {
 		<BrowserRouter>
 			<div className='App'>
 				<Routes>
-					<Route path='/' element={<Layout />}>
+					<Route path='/todo-router-v1/' element={<Layout />}>
 						<Route
 							index
 							element={
@@ -58,7 +58,7 @@ function App() {
 							path='apilist'
 							element={<ApiList customStyleButtons={customStyleButtons} />}
 						/>
-						<Route path='*' element={<NotFound />} />
+						<Route path='/*' element={<NotFound />} />
 					</Route>
 				</Routes>
 			</div>

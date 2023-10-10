@@ -68,21 +68,21 @@ const ApiList = ({ customStyleButtons }) => {
 					style={customStyleButtons}
 					onClick={() => deleteListHandler(setApiPosts)}
 				>
-					Delete all
+					Delete all tasks
 				</CustomButton>
 
 				<CustomButton
 					style={customStyleButtons}
 					onClick={() => deleteCompleting(apiPosts, setApiPosts)}
 				>
-					Delete Completing
+					Delete Complete tasks
 				</CustomButton>
 
 				<CustomButton
 					style={customStyleButtons}
 					onClick={() => deleteUncompleting(apiPosts, setApiPosts)}
 				>
-					Delete uncompleted tasks
+					Delete uncomplete tasks
 				</CustomButton>
 
 				<CustomButton
