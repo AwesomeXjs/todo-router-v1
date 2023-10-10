@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/todo-router-v1/static/css/main.b0e38aa1.css",
-    "main.js": "/todo-router-v1/static/js/main.cba37a96.js",
+    "main.js": "/todo-router-v1/static/js/main.e3ad4672.js",
     "index.html": "/todo-router-v1/index.html",
     "main.b0e38aa1.css.map": "/todo-router-v1/static/css/main.b0e38aa1.css.map",
-    "main.cba37a96.js.map": "/todo-router-v1/static/js/main.cba37a96.js.map"
+    "main.e3ad4672.js.map": "/todo-router-v1/static/js/main.e3ad4672.js.map"
   },
   "entrypoints": [
     "static/css/main.b0e38aa1.css",
-    "static/js/main.cba37a96.js"
+    "static/js/main.e3ad4672.js"
   ]
 }
